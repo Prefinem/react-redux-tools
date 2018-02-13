@@ -1,5 +1,5 @@
 import { combineReducers } from 'redux';
-import { forkSafely } from './sagas';
+import forkSafely from './../sagas/forkSafely';
 
 const createActions = (models) => (
 	Object.keys(models).reduce((accumulator, key) => {
