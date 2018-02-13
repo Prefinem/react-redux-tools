@@ -41,5 +41,5 @@
         "test": "gulp build && jest",
         "watch": "gulp watch"
     },
-    "version": "0.0.1"
+    "version": "0.0.2"
 }
