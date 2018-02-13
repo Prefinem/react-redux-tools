@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+echo "running pre-commit hook"
+
 export PATH=/usr/local/bin:$PATH
 
 # Copy Paste Detector - https://github.com/kucherenko/jscpd
