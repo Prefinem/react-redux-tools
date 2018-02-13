@@ -1,7 +1,7 @@
+/* global fetch */
 import 'isomorphic-fetch';
-import { call } from 'redux-saga/effects';
 
-function fetchAPI (method, url, payload, token, options = {}) { // eslint-disable-line max-params
+const fetchAPI = (method, url, payload, options = {}) => { // eslint-disable-line max-params
 	const request = {
 		...options,
 		headers: {
@@ -17,52 +17,30 @@ function fetchAPI (method, url, payload, token, options = {}) { // eslint-disabl
 	}
 
 	return fetch(url, request);
-}
+};
 
-function fetchJSON (method, url, payload, token, options) { // eslint-disable-line max-params
-	return fetchAPI(method, url, payload, token, options)
+const fetchJSON = (method, url, payload, options) => ( // eslint-disable-line max-params
+	fetchAPI(method, url, payload, options)
 		.then((response) => response.json())
 		.catch((error) => {
 			throw error;
-		});
-}
+		})
+);
 
-function fetchHTML (method, url, payload, token, options) { // eslint-disable-line max-params
-	return fetchAPI(method, url, payload, token, options)
+const fetchHTML = (method, url, payload, options) => ( // eslint-disable-line max-params
+	fetchAPI(method, url, payload, options)
 		.then((response) => response.text())
 		.catch((error) => {
 			throw error;
-		});
-}
+		})
+);
 
-function getAPI () {
-	if (window.api) {
-		return window.api;
-	}
-
-	return '';
-}
-
-function getAPIURL (url) {
-	if (url.indexOf('http') > -1) {
-		return url;
-	}
-
-	return `${getAPI()}${url}`;
-}
-
-function *api (method, url, payload, options) { // eslint-disable-line max-params
-	const apiURL = getAPIURL(url);
-	const response = yield fetchJSON(method, apiURL, payload, token, options);
-
-	return response;
-}
+const api = function *api (method, url, payload, options) { // eslint-disable-line max-params
+	return yield fetchJSON(method, url, payload, options);
+};
 
 export const html = function *html (method, url, payload) {
-	const apiURL = getAPIURL(url);
-	const response = yield fetchHTML(method, apiURL, payload, token);
-
-	return response;
+	return yield fetchHTML(method, url, payload);
 };
 
 export const get = function *get (url) {

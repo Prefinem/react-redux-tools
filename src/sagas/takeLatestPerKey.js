@@ -1,7 +1,7 @@
 import { cancel, fork, take } from 'redux-saga/effects';
 
 // Allows multiple tasks in parallel but only one at a time per the payload value passed as the key.
-export const takeLatestPerKey = (pattern, key, saga, ...args) => fork(function *takeLatestPerKey () { // eslint-disable-line max-params
+export const takeLatestPerKey = (pattern, key, saga, ...args) => fork(function *takeLatestPerKeyFN () { // eslint-disable-line max-params
 	const lastTasks = {};
 
 	while (true) { // eslint-disable-line no-constant-condition

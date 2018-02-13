@@ -48,7 +48,7 @@ export const createModels = (models) => ({
 	reducer: createReducer(models),
 	sagas: createSagas(models),
 	selectors: createSelectors(models),
-	types: createTypes(models)
+	types: createTypes(models),
 });
 
 export default createModels;

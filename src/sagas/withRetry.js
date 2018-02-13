@@ -8,7 +8,7 @@ const retryStrategies = {
 	linear: (index) => index,
 };
 
-export const withRetry = ({ baseDelay = 100, logger, retryAttempts = 5, retryStrategy = 'exponential' } = {}) => (fn) => (
+export const withRetry = ({ baseDelay = 100, retryAttempts = 5, retryStrategy = 'exponential' } = {}) => (fn) => (
 	function *wrappedWithRetry (...args) {
 		let index = 0;
 
@@ -19,10 +19,6 @@ export const withRetry = ({ baseDelay = 100, logger, retryAttempts = 5, retryStr
 				return result;
 			} catch (error) {
 				index += 1;
-
-				if (logger) {
-					logger(error, fn, args);
-				}
 
 				if (index === retryAttempts) {
 					throw error;

@@ -1,16 +1,16 @@
 export * from './actionCreatorCreator';
-export * from './generateActionTypes';
 export * from './createModels';
 export * from './extendModel';
+export * from './generateActionTypes';
 
 import actionCreatorCreator from './actionCreatorCreator';
-import generateActionTypes from './generateActionTypes';
 import createModels from './createModels';
 import extendModel from './extendModel';
+import generateActionTypes from './generateActionTypes';
 
 export default {
 	actionCreatorCreator,
-	generateActionTypes,
 	createModels,
 	extendModel,
-}
+	generateActionTypes,
+};
