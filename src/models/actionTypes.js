@@ -4,20 +4,20 @@ const snakeToCamelCase = (str) => (
 	str.toLowerCase().replace(/_\w/g, (match) => match[1].toUpperCase())
 );
 
-const generateActions = (types) => Object.keys(types).reduce((actions, typeName) => ({
+export const generateActions = (types) => Object.keys(types).reduce((actions, typeName) => ({
 	...actions,
 	[snakeToCamelCase(typeName)]: actionCreatorCreator(types[typeName]),
 }), {});
 
-const generateTypes = (namespace, typeNames) => typeNames.reduce((types, typeName) => {
-	types[typeName] = `${namespace}/${typeName}_REQUEST`;
-	types[typeName] = `${namespace}/${typeName}_SUCCESS`;
-	types[typeName] = `${namespace}/${typeName}_FAILURE`;
+export const generateTypes = (namespace, typeNames) => typeNames.reduce((types, typeName) => {
+	types[`${typeName.toUpperCase()}_FAILURE`] = `${namespace.toLowerCase()}/${typeName.toUpperCase()}_FAILURE`;
+	types[`${typeName.toUpperCase()}_REQUEST`] = `${namespace.toLowerCase()}/${typeName.toUpperCase()}_REQUEST`;
+	types[`${typeName.toUpperCase()}_SUCCESS`] = `${namespace.toLowerCase()}/${typeName.toUpperCase()}_SUCCESS`;
 
 	return types;
 }, {});
 
-const generateActionTypes = (namespace, typeNames) => {
+export const generateActionTypes = (namespace, typeNames) => {
 	const types = generateTypes(namespace, typeNames);
 	const actions = generateActions(types);
 

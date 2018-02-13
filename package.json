@@ -19,7 +19,8 @@
         "eslint-plugin-react": "^7.6.1",
         "gulp": "^3.9.1",
         "gulp-babel": "^7.0.0",
-        "gulp-eslint": "^4.0.0"
+        "gulp-eslint": "^4.0.0",
+        "jest": "^22.2.2"
     },
     "files": [
         "dist"
@@ -37,6 +38,7 @@
         "clean": "eslint --fix ./src/**",
         "hook": "sh ./hooks/hook.sh",
         "prepublish": "sh ./hooks/hook.sh && gulp build",
+        "test": "gulp build && jest",
         "watch": "gulp watch"
     },
     "version": "0.0.1"
