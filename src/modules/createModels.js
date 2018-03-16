@@ -1,3 +1,5 @@
+// TOOD: rename models to modules
+
 import { combineReducers } from 'redux';
 import forkSafely from './../sagas/forkSafely';
 

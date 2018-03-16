@@ -1,11 +1,24 @@
 {
     "plugins": [
         "transform-async-to-generator",
+        "transform-class-properties",
         "transform-es2015-modules-commonjs",
         "transform-object-rest-spread"
     ],
     "presets": [
-        ["react"],
-        ["stage-2"]
+        [
+            "env",
+            {
+                "targets": {
+                    "node": "6.10"
+                }
+            }
+        ],
+        [
+            "react"
+        ],
+        [
+            "stage-2"
+        ]
     ]
 }
