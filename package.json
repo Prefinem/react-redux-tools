@@ -1,4 +1,9 @@
 {
+    "author": {
+        "email": "prefinem@gmail.com",
+        "name": "Prefinem",
+        "url": "https://prefinem.com"
+    },
     "dependencies": {
         "isomorphic-fetch": "^2.2.1",
         "redux": "^3.7.2",
@@ -9,18 +14,22 @@
     "devDependencies": {
         "babel-core": "^6.26.0",
         "babel-eslint": "^8.0.0",
+        "babel-jest": "^22.4.3",
         "babel-plugin-transform-async-to-generator": "^6.24.1",
         "babel-plugin-transform-es2015-modules-commonjs": "^6.26.0",
         "babel-plugin-transform-object-rest-spread": "^6.26.0",
         "babel-preset-react": "^6.24.1",
         "babel-preset-stage-2": "^6.24.1",
-        "eslint": "^4.17.0",
+        "eslint": "^4.19.0",
         "eslint-plugin-babel": "^4.1.2",
         "eslint-plugin-react": "^7.6.1",
         "gulp": "^3.9.1",
         "gulp-babel": "^7.0.0",
         "gulp-eslint": "^4.0.0",
-        "jest": "^22.2.2"
+        "husky": "^0.14.3",
+        "jest": "^22.2.2",
+        "jest-cli": "^22.4.3",
+        "pkg-ok": "^2.1.0"
     },
     "files": [
         "dist"
@@ -36,9 +45,10 @@
     "scripts": {
         "build": "gulp build",
         "clean": "eslint --fix ./src/**",
-        "hook": "sh ./hooks/hook.sh",
-        "prepublish": "sh ./hooks/hook.sh && gulp build",
-        "test": "gulp build && jest",
+        "precommit": "eslint --fix ./src/** && jest && gulp build",
+        "prepublishOnly": "eslint --fix ./src/** && jest && gulp build && pkg-ok",
+        "start": "lerna bootstrap && lerna run build && lerna bootstrap",
+        "test": "jest --coverage",
         "watch": "gulp watch"
     },
     "version": "0.0.3"

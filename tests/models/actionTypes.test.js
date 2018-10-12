@@ -1,6 +1,6 @@
 /* global test, expect */
 
-const actionTypes = require('./../../dist/models/actionTypes');
+const actionTypes = require('./../../src/models/actionTypes');
 
 test('create all types for base type', async () => {
 	await expect(actionTypes.generateTypes('app', ['set_var'])).toEqual({

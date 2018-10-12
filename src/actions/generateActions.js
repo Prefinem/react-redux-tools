@@ -4,26 +4,10 @@ const snakeToCamelCase = (str) => (
 	str.toLowerCase().replace(/_\w/g, (match) => match[1].toUpperCase())
 );
 
-class Action {
-	constructor (type) {
-		this.type = type;
-	}
+export const generateActions = (types) => Object.keys(types).reduce((actions, typeName) => {
+	actions[snakeToCamelCase(typeName)] = actionCreatorCreator(types[typeName]);
 
-	toString () {
-		return this.type
-	}
-}
-
-const createAllActionsFromTypes = (types) => Object.keys(types).reduce((actions, typeName) => ({
-	...actions,
-	[snakeToCamelCase(typeName)]: actionCreatorCreator(types[typeName]),
-}), {});
-
-export const generateActions = (types) => Object.keys(types).reduce((actions, typeName) => ({
-	...actions,
-	[snakeToCamelCase(typeName)]: actionCreatorCreator(types[typeName]),
-}), {});
-
-
+	return actions;
+}, {});
 
 export default generateActions;
