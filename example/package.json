@@ -12,7 +12,7 @@
 	"resolutions": {
 		"eslint": "6.8.0",
 		"js-yaml": "3.13.1",
-		"mem": "6.0.1",
+		"mem": "6.1.0",
 		"webpack-dev-server": "3.10.3"
 	},
 	"scripts": {
