@@ -10,7 +10,7 @@
 		"react-scripts": "3.4.1"
 	},
 	"resolutions": {
-		"eslint": "7.5.0",
+		"eslint": "7.6.0",
 		"js-yaml": "3.14.0",
 		"mem": "6.1.0",
 		"webpack-dev-server": "3.11.0"
