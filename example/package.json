@@ -11,7 +11,7 @@
 	},
 	"resolutions": {
 		"eslint": "7.15.0",
-		"js-yaml": "3.14.0",
+		"js-yaml": "3.14.1",
 		"mem": "8.0.0",
 		"webpack-dev-server": "3.11.0"
 	},
